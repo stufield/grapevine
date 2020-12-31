@@ -10,8 +10,6 @@ Status](https://ci.appveyor.com/api/projects/status/github/stufield/grapevine?br
 
 # The `grapevine` package
 
-## The Grapes of Wrath
-
 Commonly referred to as “binary operators”, functions that have a left
 and right side are typically defined using `%%` symbols. Thus the
 colloquial term “grapevine”. The functions below represent a growing
@@ -21,10 +19,17 @@ environment.
 ## Installation
 
 To install the latest `development` version of `grapevine` from
-**GitHub**:
+**GitHub**, first install the
+[devtools](https://CRAN.R-project.org/package=devtools) package and run:
 
 ``` r
-devtools::install_github("stufield/grapevine")
+devtools::install_github("stufield/grapevine", build = TRUE)
+```
+
+If you specify a tag, you can install a GitHub release.
+
+``` r
+devtools::install_github("stufield/grapevine@v0.0.1", build = TRUE)
 ```
 
 ## LICENSE

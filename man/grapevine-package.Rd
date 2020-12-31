@@ -4,7 +4,7 @@
 \name{grapevine-package}
 \alias{grapevine}
 \alias{grapevine-package}
-\title{grapevine: The Grapes of Wrath}
+\title{grapevine: The Grapevine}
 \description{
 A simple set of useful, unique, and non-standard binary operators.
 }

@@ -4,16 +4,19 @@
 \alias{grapes}
 \alias{\%!in\%}
 \alias{\%||\%}
+\alias{\%null\%}
 \alias{\%==\%}
 \alias{\%===\%}
 \alias{\%!=\%}
 \alias{\%$\%}
 \alias{\%!$\%}
-\title{Grapes of Wrath}
+\title{The Grapevine}
 \usage{
 x \%!in\% y
 
 x \%||\% y
+
+x \%null\% y
 
 x \%==\% y
 
@@ -24,6 +27,9 @@ x \%!=\% y
 x \%$\% y
 
 x \%!$\% y
+}
+\arguments{
+\item{x, y}{The left and right hand side of the grape bunch (binary operator).}
 }
 \description{
 Commonly referred to as "binary operators", functions that have a left and
@@ -37,14 +43,16 @@ binary operators that come in handy when working in an R environment.
 
 \item \code{\%||\%}: A friendly version of \code{\link[=ifelse]{ifelse()}}
 
-\item \code{\%==\%}: test equality of R objects
+\item \code{\%null\%}: If \code{x = NULL} or \code{x = ""}, return \code{NULL}, otherwise \code{y}.
 
-\item \code{\%===\%}: Test identical of R objects
+\item \code{\%==\%}: Test equality of 2 R objects, minus the attributes.
 
-\item \code{\%!=\%}: easily test inequality of R objects
+\item \code{\%===\%}: Test absolute equality of 2 R objects.
 
-\item \code{\%$\%}: alias for \code{x[x \%in\% y]}.
+\item \code{\%!=\%}: Test absolute inequalit of 2 R objects
 
-\item \code{\%!$\%}: alias for \code{x[!x \%in\% y]}.
+\item \code{\%$\%}: Shorthand alias for \code{x[x \%in\% y]}.
+
+\item \code{\%!$\%}: Shorthand alias for \code{x[!x \%in\% y]}, i.e. \code{setdiff(x, y)}.
 }}
 

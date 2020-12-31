@@ -1,7 +1,7 @@
 Type: Package
 Package: grapevine
-Title: The Grapes of Wrath
-Version: 0.0.1
+Title: The Grapevine
+Version: 0.0.0.9000
 Authors@R: 
     person(given = "Stu",
            family = "Field",
@@ -19,7 +19,6 @@ Suggests:
     knitr (>= 1.17),
     rmarkdown (>= 1.10),
     roxygen2 (>= 6.1.0),
-    spelling (>= 1.2),
     testthat (>= 2.0.0)
 VignetteBuilder: 
     knitr
