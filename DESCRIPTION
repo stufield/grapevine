@@ -1,0 +1,32 @@
+Type: Package
+Package: grapevine
+Title: The Grapes of Wrath
+Version: 0.0.1
+Authors@R: 
+    person(given = "Stu",
+           family = "Field",
+           role = c("aut", "cre"),
+           email = "stu.g.field@gmail.com")
+Description: A simple set of useful, unique, and non-standard binary operators.
+License: MIT + file LICENSE
+URL: https://github.com/stufield/grapevine
+Depends:
+    R (>= 3.5.0)
+Imports:
+    magrittr (>= 2.0.0)
+Suggests:
+    devtools (>= 2.0.1),
+    knitr (>= 1.17),
+    rmarkdown (>= 1.10),
+    roxygen2 (>= 6.1.0),
+    spelling (>= 1.2),
+    testthat (>= 2.0.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+Language: en-US
+LazyData: yes
+LazyLoad: yes
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+X-CRAN-COMMENT: *Extra comments can go here*
