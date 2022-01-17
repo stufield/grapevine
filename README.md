@@ -32,6 +32,20 @@ If you specify a tag, you can install a GitHub release.
 devtools::install_github("stufield/grapevine@v0.0.1", build = TRUE)
 ```
 
+## Functions
+
+-   `%||%`
+-   `%@@%`
+-   `%@@%<-`
+-   `%==%`
+-   `%!=%`
+-   `%===%`
+-   `%set%`
+-   `%!set%`
+-   `%[[%`
+-   `%null%`
+-   `%!in%`
+
 ## LICENSE
 
 This package (suite of programs) is free software; you can redistribute
@@ -39,7 +53,7 @@ it and/or modify it under the terms of the MIT License. See please see
 the [LICENSE](LICENSE). By using in this package you agree to abide by
 its terms.
 
------
+------------------------------------------------------------------------
 
-Created by [Rmarkdown](https://github.com/rstudio/rmarkdown) (v2.6) and
-R version 3.6.3 (2020-02-29).
+Created by [Rmarkdown](https://github.com/rstudio/rmarkdown) (v2.8) and
+R version 4.1.0 (2021-05-18).

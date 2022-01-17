@@ -47,6 +47,21 @@ devtools::install_github("stufield/grapevine@v0.0.1", build = TRUE)
 ```
 
 
+## Functions
+
+- `%||%`
+- `%@@%`
+- `%@@%<-`
+- `%==%`
+- `%!=%`
+- `%===%`
+- `%set%`
+- `%!set%`
+- `%[[%`
+- `%null%`
+- `%!in%`
+
+
 ## LICENSE
 
 This package (suite of programs) is free software; you can redistribute 
