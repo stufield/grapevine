@@ -12,8 +12,6 @@ License: MIT + file LICENSE
 URL: https://github.com/stufield/grapevine
 Depends:
     R (>= 3.5.0)
-Imports:
-    magrittr (>= 2.0.0)
 Suggests:
     devtools (>= 2.0.1),
     knitr (>= 1.17),
