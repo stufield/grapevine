@@ -5,11 +5,14 @@
 \alias{\%!in\%}
 \alias{\%||\%}
 \alias{\%null\%}
+\alias{\%@@\%}
+\alias{\%@@\%<-}
 \alias{\%==\%}
-\alias{\%===\%}
 \alias{\%!=\%}
-\alias{\%$\%}
-\alias{\%!$\%}
+\alias{\%===\%}
+\alias{\%set\%}
+\alias{\%!set\%}
+\alias{\%[[\%}
 \title{The Grapevine}
 \usage{
 x \%!in\% y
@@ -18,41 +21,92 @@ x \%||\% y
 
 x \%null\% y
 
-x \%==\% y
+x \%@@\% y
 
-x \%===\% y
+x \%@@\% y <- value
+
+x \%==\% y
 
 x \%!=\% y
 
-x \%$\% y
+x \%===\% y
 
-x \%!$\% y
+x \%set\% y
+
+x \%!set\% y
+
+x \%[[\% y
 }
 \arguments{
-\item{x, y}{The left and right hand side of the grape bunch (binary operator).}
+\item{x}{The left hand side of the infix operator.}
+
+\item{y}{The right hand side of the infix operator.}
+
+\item{value}{New value for attribute \code{y}.}
 }
 \description{
-Commonly referred to as "binary operators", functions that have a left and
-right side are typically defined using \code{\%\%} symbols. Thus the colloquial
-term "grapes". The functions below represent a growing list of useful
+Commonly referred to as "binary" or "infix" operators, functions that have
+a left and right side are typically defined using \code{\%\%} symbols.
+Thus the colloquial term "grapes".
+The functions below represent a growing list of useful
 binary operators that come in handy when working in an R environment.
 }
 \section{Functions}{
 \itemize{
 \item \code{\%!in\%}: A friendly version of \code{!x \%in\% y}.
 
-\item \code{\%||\%}: A friendly version of \code{\link[=ifelse]{ifelse()}}
+\item \code{\%||\%}: A friendly version of \code{if (length(x) == 0) y else x} for \code{NULL} objects.
 
 \item \code{\%null\%}: If \code{x = NULL} or \code{x = ""}, return \code{NULL}, otherwise \code{y}.
 
-\item \code{\%==\%}: Test equality of 2 R objects, minus the attributes.
+\item \code{\%@@\%}: A friendly version of \code{attr(x, y)}. \code{y} can be unquoted.
 
-\item \code{\%===\%}: Test absolute equality of 2 R objects.
+\item \code{\%@@\%<-}: Assign attributes via infix operator.
+A friendly version of \code{attr(x, y) <- value}. \code{y} can be unquoted.
 
-\item \code{\%!=\%}: Test absolute inequalit of 2 R objects
+\item \code{\%==\%}: A gentler logical test for equality of two objects.
+Attributes are \emph{not} checked. Use \verb{\%===\%} to check attributes.
 
-\item \code{\%$\%}: Shorthand alias for \code{x[x \%in\% y]}.
+\item \code{\%!=\%}: A logical test that two objects are \emph{not} equal.
 
-\item \code{\%!$\%}: Shorthand alias for \code{x[!x \%in\% y]}, i.e. \code{setdiff(x, y)}.
+\item \code{\%===\%}: Also tests attributes of \code{x} and \code{y}.
+
+\item \code{\%set\%}: Subset values in \code{x} by \code{y}. Alias for \code{x[x \%in\% y]}.
+Similar to \code{intersect(x, y)} except names and class of \code{x} are maintained.
+
+\item \code{\%!set\%}: Subset values in \code{x} \emph{not} in \code{y}. Alias for \code{x[!x \%in\% y]}.
+Similar to \code{setdiff(x, y)} except names and class of \code{x} are maintained.
+
+\item \code{\%[[\%}: Extracts the \code{ith} element for each of \code{n} elements of
+a list or data frame, returning either a vector of length \code{n} or a single
+row data frame with \code{n} columns.
 }}
 
+\examples{
+foo <- NULL
+foo \%||\% "bar"     # 'bar'
+"foo" \%||\% "bar"   # 'foo'
+
+factor(1:3) \%@@\% levels
+factor(1:3, levels = LETTERS[1:3]) \%@@\% levels
+mtcars \%@@\% row.names
+
+mtcars \%==\% mtcars       # equal
+cars2 <- mtcars
+cars2 \%@@\% a <- "foo"  # attr assignment; with unquoted 'a'
+mtcars \%==\% cars2        # attr not checked; TRUE
+mtcars \%===\% cars2       # attr checked; FALSE
+
+x <- list(a = "b", c = "d", e = "f")
+x \%set\% c("a", "c", "d")   # 'c' match
+x \%!set\% c("a", "c", "d")  # 'b' match
+unlist(x) \%!set\% c("a", "c", "d")   # 'c' match; vector-vector
+
+x <- list(a = 1:2, b = 3:4, c = 5:6)
+x \%[[\% 2L
+
+data.frame(x) \%[[\% 2L
+}
+\seealso{
+\code{\link[=intersect]{intersect()}}, \code{\link[=setdiff]{setdiff()}}, \code{\link[=all.equal]{all.equal()}}, \code{\link[=isTRUE]{isTRUE()}}
+}
