@@ -124,8 +124,7 @@ NULL
 `%[[%` <- function(x, y) {
   stopifnot(typeof(x) == "list")
   if ( inherits(x, "data.frame") ) {
-    z <- lapply(x, `[[`, i = y)
-    data.frame(z, check.names = FALSE)
+    x[y, ]
   } else {
     vals <- vapply(x, typeof, "")
     stopifnot(length(unique(vals)) == 1L)  # ensure type stable; no coercion
