@@ -2,11 +2,13 @@ Type: Package
 Package: grapevine
 Title: The Grapevine
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(given = "Stu",
            family = "Field",
-           role = c("aut", "cre"),
-           email = "stu.g.field@gmail.com")
+           role = c("aut", "cre", "cph"),
+           email = "stu.g.field@gmail.com",
+           comment = c(ORCID = "0000-0002-1024-5859"))
+    )
 Description: A simple set of useful, unique, and non-standard binary operators.
 License: MIT + file LICENSE
 URL: https://github.com/stufield/grapevine
@@ -22,8 +24,7 @@ VignetteBuilder:
     knitr
 Encoding: UTF-8
 Language: en-US
-LazyData: yes
-LazyLoad: yes
+Config/testthat/edition: 3
+Config/Needs/website: tidyverse/tidytemplate
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-X-CRAN-COMMENT: *Extra comments can go here*
+RoxygenNote: 7.3.1
