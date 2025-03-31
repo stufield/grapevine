@@ -1,21 +1,21 @@
 
-# no MacOS files
-/.DS_Store
+# ignore anything doc (i.e. vignettes)
+inst/doc/*
 
-# no dropbox attributes files
-*dropbox.attr
+# ignore files related to adding keyword expansion
+# Revision Info: Id, Author and Date in file header
+# This was a desired feature request once; look like SVN style
+# and may be incorporated at some point in the future
+filter_clean
+filter_smudge
 
-# R stuff
-.Rhistory
-.RData
-
-# RStudio files
+# ignore all RStudio project related files
 .Rproj.user
-/r.Rproj
+\.DS_Store
+\.Rhistory
+^r\\.Rproj$
 
-# knitr and R markdown default tmp files and cache directories
-/*_cache/
-/cache/
-*.utf8.md
-*.knit.md
-
+# ignore all packrat related files
+.project
+packrat/lib*/
+.Rproj.user
