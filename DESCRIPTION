@@ -16,12 +16,7 @@ Depends:
     R (>= 3.5.0)
 Suggests:
     devtools (>= 2.0.1),
-    knitr (>= 1.17),
-    rmarkdown (>= 1.10),
-    roxygen2 (>= 6.1.0),
-    testthat (>= 2.0.0)
-VignetteBuilder: 
-    knitr
+    roxygen2 (>= 6.1.0)
 Encoding: UTF-8
 Language: en-US
 Config/testthat/edition: 3
