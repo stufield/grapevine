@@ -10,42 +10,59 @@ RCMD = R --vanilla CMD
 RSCRIPT = Rscript --vanilla
 
 
-all: roxygen check clean
+all: check clean
+roxygen: docs
 
-roxygen:
-	@ $(RSCRIPT) \
-	-e "devtools::document(roclets = c('rd', 'collate', 'namespace'))"
+docs:
+	@ $(RSCRIPT) -e "roxygen2::roxygenise(roclets = c('collate', 'namespace', 'rd'))"
 
 readme:
 	@ echo "Rendering README.Rmd"
 	@ $(RSCRIPT) \
-	-e "Sys.setenv(RSTUDIO_PANDOC='/Applications/RStudio.app/Contents/MacOS/pandoc')" \
+	-e "Sys.setenv(RSTUDIO_PANDOC='/usr/bin/pandoc/')" \
+	-e "options(cli.width = 80L)" \
 	-e "rmarkdown::render('README.Rmd', quiet = TRUE)"
 	@ $(RM) README.html
 
 test:
 	@ $(RSCRIPT) \
-	-e "Sys.setenv(ON_JENKINS = 'true', TZ = 'America/Denver')" \
-	-e "devtools::test(reporter = 'check', stop_on_failure = TRUE)"
+	-e "Sys.setenv(TZ = 'America/Denver')" \
+	-e "devtools::test(reporter = 'summary', stop_on_failure = TRUE)"
 
-build: roxygen
+test_file:
+	@ $(RSCRIPT) \
+	-e "Sys.setenv(TZ = 'America/Denver', NOT_CRAN = 'true')" \
+	-e "devtools::load_all()" \
+	-e "testthat::test_file('$(FILE)', reporter = 'progress', stop_on_failure = TRUE)"
+
+accept_snapshots:
+	@ Rscript -e "testthat::snapshot_accept()"
+
+build: docs
 	@ cd ..;\
 	$(RCMD) build --resave-data $(PKGSRC)
-
-pkgdown: roxygen
-	@ $(RSCRIPT) inst/deploy-pkgdown.R
 
 check: build
 	@ cd ..;\
 	$(RCMD) check --no-manual $(PKGNAME)_$(PKGVERS).tar.gz
 
-install_deps:
-	@ $(RSCRIPT) \
-	-e "if (!requireNamespace('remotes')) install.packages('remotes')" \
-	-e "remotes::install_deps(dependencies = TRUE)"
+install:
+	@ R CMD INSTALL --use-vanilla --preclean --resave-data .
 
-install: install_deps build
-	@ R CMD INSTALL --use-vanilla --resave-data $(PKGNAME)_$(PKGVERS).tar.gz
+increment:
+	@ echo "Adding Version '$(ver)' to DESCRIPTION"
+	@ $(shell sed -i 's/^Version: .*/Version: $(ver)/' DESCRIPTION)
+	@ echo "Adding new heading to 'NEWS.md'"
+	@ $(shell sed -i '1s/^/# $(PKGNAME) $(ver)\n\n/' NEWS.md)
+
+release:
+	@ echo "Adding release commit"
+	@ git add -u
+	@ git commit -m "Increment version number"
+	@ git push origin main
+	@ git tag -a v$(PKGVERS) -m "Release of $(PKGVERS)"
+	@ git push origin v$(PKGVERS)
+	@ echo "Remember to bump the DESCRIPTION file with bump_to_dev()"
 
 clean:
 	@ cd ..;\
