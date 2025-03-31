@@ -1,12 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
 
-[![Travis Build
-Status](https://travis-ci.org/stufield/grapevine.svg?branch=master)](https://travis-ci.org/stufield/grapevine)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/stufield/grapevine?branch=master&svg=true)](https://ci.appveyor.com/project/stufield/grapevine)
-[![CRAN\_Status](http://www.r-pkg.org/badges/version/grapevine)](https://cran.r-project.org/package=grapevine)
-[![codecov](https://codecov.io/gh/stufield/grapevine/branch/master/graph/badge.svg)](https://codecov.io/gh/stufield/grapevine)
+![GitHub
+version](https://img.shields.io/badge/Version-0.0.0.9000-success.svg?style=flat&logo=github)
+[![CRAN
+status](http://www.r-pkg.org/badges/version/helpr)](https://cran.r-project.org/package=helpr)
+[![R-CMD-check](https://github.com/stufield/helpr/workflows/R-CMD-check/badge.svg)](https://github.com/stufield/helpr/actions)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/helpr)](https://cran.r-project.org/package=helpr)
+[![Codecov test
+coverage](https://codecov.io/gh/stufield/helpr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/stufield/helpr?branch=main)
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+<!-- badges: end -->
 
 # The `grapevine` package
 
@@ -23,37 +31,23 @@ To install the latest `development` version of `grapevine` from
 [devtools](https://CRAN.R-project.org/package=devtools) package and run:
 
 ``` r
-devtools::install_github("stufield/grapevine", build = TRUE)
-```
+# current dev version
+remotes::install_github("stufield/grapevine")
 
-If you specify a tag, you can install a GitHub release.
-
-``` r
-devtools::install_github("stufield/grapevine@v0.0.1", build = TRUE)
+# or a specific version
+remotes::install_github("stufield/grapevine@v0.0.1")
 ```
 
 ## Functions
 
--   `%||%`
--   `%@@%`
--   `%@@%<-`
--   `%==%`
--   `%!=%`
--   `%===%`
--   `%set%`
--   `%!set%`
--   `%[[%`
--   `%null%`
--   `%!in%`
-
-## LICENSE
-
-This package (suite of programs) is free software; you can redistribute
-it and/or modify it under the terms of the MIT License. See please see
-the [LICENSE](LICENSE). By using in this package you agree to abide by
-its terms.
-
-------------------------------------------------------------------------
-
-Created by [Rmarkdown](https://github.com/rstudio/rmarkdown) (v2.8) and
-R version 4.1.0 (2021-05-18).
+- `%||%`
+- `%@@%`
+- `%@@%<-`
+- `%==%`
+- `%!=%`
+- `%===%`
+- `%set%`
+- `%!set%`
+- `%[[%`
+- `%null%`
+- `%!in%`
