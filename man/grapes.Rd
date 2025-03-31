@@ -53,35 +53,35 @@ binary operators that come in handy when working in an R environment.
 }
 \section{Functions}{
 \itemize{
-\item \code{\%!in\%}: A friendly version of \code{!x \%in\% y}.
+\item \code{x \%!in\% y}: A friendly version of \code{!x \%in\% y}.
 
-\item \code{\%||\%}: A friendly version of \code{if (length(x) == 0) y else x} for \code{NULL} objects.
+\item \code{x \%||\% y}: A friendly version of \code{if (length(x) == 0) y else x} for \code{NULL} objects.
 
-\item \code{\%null\%}: If \code{x = NULL} or \code{x = ""}, return \code{NULL}, otherwise \code{y}.
+\item \code{x \%null\% y}: If \code{x = NULL} or \code{x = ""}, return \code{NULL}, otherwise \code{y}.
 
-\item \code{\%@@\%}: A friendly version of \code{attr(x, y)}. \code{y} can be unquoted.
+\item \code{x \%@@\% y}: A friendly version of \code{attr(x, y)}. \code{y} can be unquoted.
 
-\item \code{\%@@\%<-}: Assign attributes via infix operator.
+\item \code{`\%@@\%`(x, y) <- value}: Assign attributes via infix operator.
 A friendly version of \code{attr(x, y) <- value}. \code{y} can be unquoted.
 
-\item \code{\%==\%}: A gentler logical test for equality of two objects.
+\item \code{x \%==\% y}: A gentler logical test for equality of two objects.
 Attributes are \emph{not} checked. Use \verb{\%===\%} to check attributes.
 
-\item \code{\%!=\%}: A logical test that two objects are \emph{not} equal.
+\item \code{x \%!=\% y}: A logical test that two objects are \emph{not} equal.
 
-\item \code{\%===\%}: Also tests attributes of \code{x} and \code{y}.
+\item \code{x \%===\% y}: Also tests attributes of \code{x} and \code{y}.
 
-\item \code{\%set\%}: Subset values in \code{x} by \code{y}. Alias for \code{x[x \%in\% y]}.
+\item \code{x \%set\% y}: Subset values in \code{x} by \code{y}. Alias for \code{x[x \%in\% y]}.
 Similar to \code{intersect(x, y)} except names and class of \code{x} are maintained.
 
-\item \code{\%!set\%}: Subset values in \code{x} \emph{not} in \code{y}. Alias for \code{x[!x \%in\% y]}.
+\item \code{x \%!set\% y}: Subset values in \code{x} \emph{not} in \code{y}. Alias for \code{x[!x \%in\% y]}.
 Similar to \code{setdiff(x, y)} except names and class of \code{x} are maintained.
 
-\item \code{\%[[\%}: Extracts the \code{ith} element for each of \code{n} elements of
+\item \code{x \%[[\% y}: Extracts the \code{ith} element for each of \code{n} elements of
 a list or data frame, returning either a vector of length \code{n} or a single
 row data frame with \code{n} columns.
-}}
 
+}}
 \examples{
 foo <- NULL
 foo \%||\% "bar"     # 'bar'
